@@ -1,0 +1,9 @@
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import css from "./MoviesPage.module.css";
+
+сonst MovieCast = () => {
+    const {movieId} = useParams();
+    const [cast, setCast] = useState;
+}
+
