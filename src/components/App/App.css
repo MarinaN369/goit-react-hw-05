@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    font-family: monospace, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #080b14;
+    color: white;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  li {
+    list-style: none;
+  }
