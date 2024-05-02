@@ -1,7 +1,7 @@
 .nav {
     display: flex;
     gap: 20px;
-    background-color: rgba(7, 195, 67, 0.802);
+    background-color: rgba(180, 171, 204, 0.802);
     padding: 20px;
     box-shadow: 0 0 20px rgb(75, 74, 71);
   }
