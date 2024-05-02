@@ -1,1 +1,28 @@
 
+.input {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    margin: 20px;
+    background-color: #080b14;
+    color: white;
+    padding: 10px 5px;
+    font-size: 20px;
+  }
+
+  .input:focus {
+    border: 1px solid #516392;
+  }
+
+  .button {
+    padding: 15px 35px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    border: 3px solid rgb(15, 70, 15);
+    box-shadow: 5px 2px 2px rgb(15, 70, 15);
+    cursor: pointer;
+    margin: 20px;
+  }
