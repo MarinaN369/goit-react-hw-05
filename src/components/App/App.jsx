@@ -4,9 +4,9 @@ import { Routes, Route } from "react-router-dom";
 // import MovieCast from "../MovieCast/MovieCast";
 // import MovieList from "../MovieList/MovieList";
 // import MovieReviews from "../MovieReviews/MovieReviews";
-// import Navigation from "../Navigation";
+import Navigation from "../Navigation/Navigation";
 // import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
-// import MoviesPage  from "./pages/MoviesPage/MoviesPage";
+import MoviesPage  from "../../pages/MoviesPage/MoviesPage";
 // import HomePage from "../../pages/HomePage/HomePage";
 // import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 const HomePage = lazy(() => import ("../../pages/HomePage"));
@@ -17,14 +17,14 @@ const HomePage = lazy(() => import ("../../pages/HomePage"));
 function App () {
     return (
     <div>
-    {/* <Navigation/> */}
+    <Navigation/>
     <main>
     <Suspense fallback={<div>Loading...</div>}>
     <Routes>
     <Route path="/" element={<HomePage/>} />
-    {/* <Route path="/movies" element={<MoviesPage/>} />
-    <Route path="'/movies/:movieId'" element={<MovieDetailsPage/>} />
-    <Route path="*" element={<NotFoundPage/>} /> */}
+    <Route path="/movies" element={<MoviesPage/>} />
+    {/* <Route path="'/movies/:movieId'" element={<MovieDetailsPage/>} /> */}
+    {/* <Route path="*" element={<NotFoundPage/>} /> */}
     </Routes>
     </Suspense>
     </main>
