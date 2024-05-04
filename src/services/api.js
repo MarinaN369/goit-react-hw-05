@@ -20,7 +20,7 @@ export const fetchMovie = async () => {
     }
 };
 
-export const fetchMoviebyId = async(movieId) => {
+export const fetchMovieById = async(movieId) => {
   const options = {
     method: "GET",
     url: `https://api.themoviedb.org/3/movie/${movieId}`,

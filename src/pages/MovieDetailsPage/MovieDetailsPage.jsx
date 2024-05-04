@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { fetchMoviesById } from "../../services/api";
+import { fetchMovieById } from "../../services/api";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
 import MovieCast from "../../components/MovieCast/MovieCast";
 import MovieReviews from "../../components/MovieReviews/MovieReviews";
@@ -21,7 +21,7 @@ const MovieDetailsPage = () => {
       const fetchData = async () => {
         try {
           setLoading(true);
-          const response = await fetchMoviesById(movieId);
+          const response = await fetchMovieById(movieId);
           setMovieData(response);
           setLoading(false);
         } catch (error) {
