@@ -1,66 +1,97 @@
-import {useParams} from "react-router-dom";
-import {useState, useEffect, useRef} from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { fetchMoviesById } from "../../services/api";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
+import MovieCast from "../../components/MovieCast/MovieCast";
+import MovieReviews from "../../components/MovieReviews/MovieReviews";
 import css from "./MovieDetailsPage.module.css";
 
 
 const MovieDetailsPage = () => {
-    const {movieid} = useParams;
-    const [info, setInfo] = useState(null);
+    const { movieId } = useParams();
+    const [movieData, setMovieData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(true);
-    const [location, setLocation] = useLocation;
-    const comeBack = useRef(location.state ?? "/");
-    console.log(comeBack.current);
-
+    const [error, setError] = useState(null);
+  
+    const location = useLocation();
+    const backLinkRef = useRef(location.state ?? "/");
+    console.log(backLinkRef.current);
+  
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setLoading(true);
-                const response = await fetchMoviebyId(movieId);
-                setInfo(response);
-                setLoading(false);
-
-            }
-            catch(error) {
-                setError(error);
-                setLoading(false);
-            }
-        };
-        fetchData();
-}, [movieId]);
-
-useEffect(() => {
-    console.log(info), [info]);
-
-    if(loading) {return <div>Loading...</div>;}
-    if(error) {return <div>Error: {error.message}</div>;}
-
+      const fetchData = async () => {
+        try {
+          setLoading(true);
+          const response = await fetchMoviesById(movieId);
+          setMovieData(response);
+          setLoading(false);
+        } catch (error) {
+          setError(error);
+          setLoading(false);
+        }
+      };
+  
+      fetchData();
+    }, [movieId]);
+  
+    useEffect(() => {
+      console.log(movieData);
+    }, [movieData]);
+  
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+  
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    }
+  
     return (
-        if(info !== null) &&
+      movieData !== null && (
         <div>
-            <div className={css.container}>
-                <div>
-                    <Link to={comeBack.current}>
-                        <button>Go back</button>
-                    </Link>
-                </div>
-                <img 
-                style= {{width: "300px"}}
-                src={`https://image.tmdb.org/t/p/w500/${info.poster_path} alt={info.title}`}
-                />
-
+          <div className={css.container}>
+            <div>
+              <Link to={backLinkRef.current}>
+                <button className={css.button}>Go back</button>
+              </Link>
+              <img
+                style={{ width: "300px" }}
+                src={`https://image.tmdb.org/t/p/w500/${movieData.actor_photo} alt={movieData.title}`}
+              />
             </div>
-
-<div className={css.baseInfo}>
-    <h1>{info.title}</h1>
-    <p>User Score: {info.average_percent}</p>
-    <h2>Overview</h2>
-    <p>{info.short_review}</p>
-    <h3>Genres</h3>
-    <p className={genresList}>
-        {info.genres.map((genre) => genre.name).join(",")}</p>
-
-</div>
+            <div className={css.info}>
+              <h1>{movieData.title}</h1>
+              <p>User rating: {movieData.vote_average}</p>
+              <h2>Overview</h2>
+              <p>{movieData.overview}</p>
+              <h3>Genres</h3>
+              <p className={css.genresList}>
+                {movieData.genres.map((genre) => genre.name).join(", ")}
+              </p>
+            </div>
+          </div>
+          <div className={css.additional}>
+            <hr />
+            <h3>Additional information</h3>
+            <ul>
+              <li>
+                <Link className={css.link} to="cast">
+                  <h3>Cast</h3>
+                </Link>
+              </li>
+              <li>
+                <Link to="reviews">
+                  <h3>Reviews</h3>
+                </Link>
+                <Routes>
+                  <Route path="cast" element={<MovieCast />} />
+                  <Route path="reviews" element={<MovieReviews />} />
+                </Routes>
+              </li>
+            </ul>
+          </div>
         </div>
-    )
-}
+      )
+    );
+  };
+  
+  export default MovieDetailsPage;

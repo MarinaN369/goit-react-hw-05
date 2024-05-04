@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    padding: 20px;
+    margin-top: 35px;
+  }
+  
+  .genresList {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .info {
+    margin-left: 20px;
+  }
+  
+  .additional {
+    padding: 20px;
+  }
+  
+  .link {
+    color: rgb(144, 63, 202);
+  }
+  
+  .button {
+    padding: 15px 35px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    border: 3px solid rgb(15, 70, 15);
+    box-shadow: 5px 2px 2px rgb(15, 70, 15);
+    cursor: pointer;
+    margin: 20px;
+  }

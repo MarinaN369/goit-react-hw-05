@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import MovieCast from "../MovieCast/MovieCast";
 import MovieList from "../MovieList/MovieList";
-// import MovieReviews from "../MovieReviews/MovieReviews";
+import MovieReviews from "../MovieReviews/MovieReviews";
 import Navigation from "../Navigation/Navigation";
 // import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
 // import MoviesPage  from "../../pages/MoviesPage/MoviesPage";
@@ -12,7 +12,7 @@ import Navigation from "../Navigation/Navigation";
 const HomePage = lazy(() => import ("../../pages/HomePage"));
 const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"));
 const MoviesPage = lazy(() => import("../../pages/MoviesPage/MoviesPage"));
-// const MovieDetailsPage = lazy(()=> import("./pages/MovieDetailsPage/MovieDetailsPage"));
+const MovieDetailsPage = lazy(()=> import("../../pages/MovieDetailsPage/MovieDetailsPage"));
 
 function App () {
     return (
@@ -23,7 +23,7 @@ function App () {
     <Routes>
     <Route path="/" element={<HomePage/>} />
     <Route path="/movies" element={<MoviesPage/>} />
-    {/* <Route path="'/movies/:movieId'" element={<MovieDetailsPage/>} /> */}
+    <Route path="'/movies/:movieId'" element={<MovieDetailsPage/>} />
     <Route path="*" element={<NotFoundPage/>} />
     </Routes>
     </Suspense>
