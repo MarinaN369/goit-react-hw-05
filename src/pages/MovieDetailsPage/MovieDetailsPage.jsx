@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { fetchMovieById } from "../../services/api";
-import { Link, Routes, Route, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import MovieCast from "../../components/MovieCast/MovieCast";
 import MovieReviews from "../../components/MovieReviews/MovieReviews";
 import css from "./MovieDetailsPage.module.css";
@@ -82,12 +82,13 @@ const MovieDetailsPage = () => {
                 <Link to="reviews">
                   <h3>Reviews</h3>
                 </Link>
-                <Routes>
+                {/* <Routes>
                   <Route path="cast" element={<MovieCast />} />
                   <Route path="reviews" element={<MovieReviews />} />
-                </Routes>
+                </Routes> */}
               </li>
             </ul>
+            <Outlet /> 
           </div>
         </div>
       )
