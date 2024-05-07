@@ -48,14 +48,15 @@ const MovieDetailsPage = () => {
     return (
       movieData !== null && (
         <div>
+          <Link to={backLinkRef.current} className={css.linkback}>
+                Go back
+              </Link>
           <div className={css.container}>
             <div>
-              <Link to={backLinkRef.current}>
-                <button className={css.button}>Go back</button>
-              </Link>
+            
               <img
                 style={{ width: "300px" }}
-                src={`https://image.tmdb.org/t/p/w500/${movieData.actor_photo} alt={movieData.title}`}
+                src={`https://image.tmdb.org/t/p/w500/${movieData.backdrop_path} alt={movieData.title}`}
               />
             </div>
             <div className={css.info}>
