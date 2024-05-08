@@ -1,14 +1,15 @@
 import css from "./MoviesPage.module.css";
 import {fetchMovieByQuery} from "../../services/api";
 import {useState, useEffect} from "react";
-import {Link, useLocation, useSearchParams} from "react-router-dom";
+import {  useSearchParams} from "react-router-dom";
+import MovieList from "../../components/MovieList/MovieList";
 
 const MoviesPage = () => {
   const [value, setValue] = useState("");
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParams = searchParams.get("query");
-  const location = useLocation();
+  // const location = useLocation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,17 +56,9 @@ const MoviesPage = () => {
           Search
         </button>
       </form>
-      {movies && (
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <Link state={location} to={`/movies/${movie.id}`}>
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+  
+      {movies && <MovieList movies={movies} />}
+
     </div>
   );
 };
